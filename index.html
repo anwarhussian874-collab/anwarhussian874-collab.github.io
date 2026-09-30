@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anwa Skills</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body class="bg-gray-50">
+<!-- LOADING LOGO 2 SEC -->
+<div id="loader" class="fixed inset-0 bg-violet-700 z-50 flex items-center justify-center">
+<h1 class="text-white text-4xl font-black animate-pulse">ANWA SKILLS</h1>
+</div>
+
+<!-- HEADER WITH 3 LINES -->
+<header class="flex justify-between p-4 bg-white shadow sticky top-0">
+<b class="text-violet-700">ANWA SKILLS</b>
+<button onclick="menu.classList.toggle('hidden')" class="text-2xl">☰</button>
+</header>
+
+<!-- HAMBURGER MENU -->
+<div id="menu" class="hidden fixed right-0 top-0 w-64 h-full bg-white shadow-2xl p-6 z-40">
+<button onclick="menu.classList.toggle('hidden')">✕ Close</button>
+<div class="mt-8 space-y-3">
+<button onclick="openP('profile')" class="w-full p-3 bg-gray-100 rounded text-left">👤 Profile - Edit Photo/Pass/ID</button>
+<button onclick="openP('dashboard')" class="w-full p-3 bg-gray-100 rounded text-left">📊 Dashboard - Today/7/30/Total</button>
+<button onclick="openP('packages')" class="w-full p-3 bg-gray-100 rounded text-left">📦 Packages</button>
+<button onclick="openP('withdraw')" class="w-full p-3 bg-gray-100 rounded text-left">💸 Withdrawal - 1 Per Day</button>
+<button onclick="openP('help')" class="w-full p-3 bg-gray-100 rounded text-left">🎧 Customer Help - No WhatsApp</button>
+<button class="w-full p-3 bg-red-100 rounded text-left">🚪 Logout</button>
+<p class="text-xs">Your ID: <span id="uid"></span></p>
+</div>
+</div>
+
+<main class="p-4 max-w-4xl mx-auto">
+<!-- HOME BANNER -->
+<div id="sec-home" class="bg-violet-700 text-white p-8 rounded-2xl text-center">
+<h1 class="text-2xl font-bold">Learn Skills & Earn Money With Anwa Skills</h1>
+<button onclick="openP('packages')" class="bg-white text-violet-700 px-6 py-2 rounded-full mt-4 font-bold">Join Now</button>
+</div>
+
+<!-- 4 PACKAGES -->
+<div id="sec-packages" class="grid md:grid-cols-2 gap-4 mt-6">
+<div class="bg-white p-4 rounded-xl shadow"><h3 class="font-bold">Learner Rs250</h3><p class="text-sm">2 Courses - 30% Commission</p><button onclick="pay(250)" class="bg-violet-700 text-white w-full py-2 rounded mt-2">Buy Now - Razorpay</button></div>
+<div class="bg-white p-4 rounded-xl shadow"><h3 class="font-bold">Starter Rs549</h3><p class="text-sm">4 Courses - 50% Commission</p><button onclick="pay(549)" class="bg-violet-700 text-white w-full py-2 rounded mt-2">Buy Now</button></div>
+<div class="bg-white p-4 rounded-xl shadow"><h3 class="font-bold">Creator Rs1099</h3><p class="text-sm">6 Courses - 70% Commission</p><button onclick="pay(1099)" class="bg-violet-700 text-white w-full py-2 rounded mt-2">Buy Now</button></div>
+<div class="bg-white p-4 rounded-xl shadow border-2 border-violet-700"><h3 class="font-bold">Pro Rs1999 - Best</h3><p class="text-sm">8 Courses - 85% Commission</p><button onclick="pay(1999)" class="bg-black text-white w-full py-2 rounded mt-2">Buy Now</button></div>
+</div>
+
+<!-- ABOUT US -->
+<div class="bg-white p-6 rounded-xl mt-6"><h3 class="font-bold">About Us / Our Mission / Why Choose Us</h3><p class="text-sm text-gray-600 mt-2">Anwa Skills is learn & earn platform. Unique ID ANWA1001, ANWA1002. Auto referral tracking.</p></div>
+
+<!-- PROFILE -->
+<div id="sec-profile" class="hidden bg-white p-6 rounded-xl mt-4"><h2 class="font-bold">Profile</h2><input type="file" class="mt-2"><input id="name" placeholder="Edit Name" class="border p-2 w-full mt-2 rounded"><input id="pass" placeholder="Change Password" type="password" class="border p-2 w-full mt-2 rounded"><p class="mt-2">Unique ID: <b id="uid2"></b></p><button class="bg-violet-700 text-white w-full py-2 rounded mt-2">Save</button></div>
+
+<!-- DASHBOARD -->
+<div id="sec-dashboard" class="hidden grid grid-cols-2 gap-3 mt-4"><div class="bg-white p-4 rounded"><p class="text-xs">Today</p><b id="today">Rs0</b></div><div class="bg-white p-4 rounded"><p class="text-xs">Last 7 Days</p><b>Rs0</b></div><div class="bg-white p-4 rounded"><p class="text-xs">Last 30 Days</p><b>Rs0</b></div><div class="bg-violet-700 text-white p-4 rounded"><p class="text-xs">Total Earnings</p><b id="total">Rs0</b></div><div class="col-span-2 bg-white p-3 rounded flex justify-between"><span>Referral Link</span><button onclick="navigator.clipboard.writeText('anwaskills.me?ref='+uid)" class="font-bold text-violet-700">Copy</button></div></div>
+
+<!-- WITHDRAWAL -->
+<div id="sec-withdraw" class="hidden bg-white p-6 rounded-xl mt-4"><h2 class="font-bold">Withdrawal - ONLY 1 PER DAY</h2><select id="type" class="border w-full p-2 mt-2 rounded"><option>Bank</option><option>UPI</option></select><input placeholder="Holder Name" class="border w-full p-2 mt-2 rounded"><input placeholder="Account No / UPI ID" class="border w-full p-2 mt-2 rounded"><input placeholder="IFSC (if Bank)" class="border w-full p-2 mt-2 rounded"><input id="amt" type="number" placeholder="Amount 100-10000" class="border w-full p-2 mt-2 rounded"><button onclick="withdraw()" class="bg-black text-white w-full py-2 rounded mt-2">Request Withdrawal</button><p id="wmsg" class="text-sm mt-2"></p></div>
+
+<!-- CUSTOMER HELP - NO WHATSAPP -->
+<div id="sec-help" class="hidden bg-white p-6 rounded-xl mt-4"><h2 class="font-bold">Customer Help (Inside Website Only)</h2><input id="hname" placeholder="Your Name" class="border w-full p-2 mt-2 rounded"><input id="hid" placeholder="User ID" class="border w-full p-2 mt-2 rounded"><input placeholder="Email" class="border w-full p-2 mt-2 rounded"><select class="border w-full p-2 mt-2 rounded"><option>Payment Issue</option><option>Package Not Received</option><option>Withdrawal Issue</option><option>Other</option></select><textarea placeholder="Describe Problem" class="border w-full p-2 mt-2 rounded h-20"></textarea><button onclick="alert('Complaint Sent to Admin!')" class="bg-violet-700 text-white w-full py-2 rounded mt-2">Submit</button></div>
+
+</main>
+
+<script>
+// A. Logo 2 sec
+setTimeout(()=>loader.style.display='none',2000);
+// C. Unique ID ANWA1001...
+let uid=localStorage.getItem('uid')||'ANWA'+(1001+Math.floor(Math.random()*9000)); localStorage.setItem('uid',uid); document.getElementById('uid').innerText=uid; document.getElementById('uid2').innerText=uid; document.getElementById('hid').value=uid;
+function openP(p){['home','packages','profile','dashboard','withdraw','help'].forEach(x=>document.getElementById('sec-'+x).classList.add('hidden')); document.getElementById('sec-'+p).classList.remove('hidden'); menu.classList.add('hidden'); if(p=='packages'){document.getElementById('sec-home').classList.remove('hidden'); document.getElementById('sec-packages').classList.remove('hidden');}}
+// F. Razorpay
+function pay(amt){ var opt={key:"rzp_test_YOURKEY",amount:amt*100,currency:"INR",name:"Anwa Skills",handler:function(){alert("Payment Success");}}; new Razorpay(opt).open(); }
+// D. Withdrawal 1 per day
+function withdraw(){ let last=localStorage.getItem('lastW'); let today=new Date().toDateString(); if(last==today){wmsg.innerText='❌ Only 1 withdrawal per day!'; return;} if(amt.value<100||amt.value>10000){wmsg.innerText='Min 100 Max 10000'; return;} localStorage.setItem('lastW',today); wmsg.innerText='✅ Pending - Admin will approve'; }
+</script>
+</body>
+  </html>
