@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin - Anwa Skills</title>
+<style>
+body{background:#0a0a0a;color:#fff;font-family:system-ui;padding:20px}
+.box{max-width:600px;margin:30px auto;background:#151515;padding:24px;border-radius:16px;border:1px solid #222}
+.logo{text-align:center;margin-bottom:20px}
+.logo img{height:60px}
+input,textarea{width:100%;background:#000;color:#fff;border:1px solid #333;padding:12px;border-radius:8px;margin:8px 0;box-sizing:border-box}
+button{background:#f6d88a;color:#000;border:none;padding:12px;width:100%;border-radius:10px;font-weight:700;cursor:pointer;margin-top:12px}
+.hidden{display:none}
+label{color:#f6d88a;font-size:13px;margin-top:12px;display:block}
+h2{text-align:center}
+</style>
+</head>
+<body>
+<div class="box" id="loginBox">
+<div class="logo"><img src="logo.png" alt="AS"><p style="letter-spacing:4px;color:#f6d88a;margin-top:8px">ANWA SKILLS</p></div>
+<h2>Admin Login</h2>
+<input id="u" placeholder="Username - Anwar123">
+<input id="p" type="password" placeholder="Password">
+<button onclick="login()">Login</button>
+<p id="err" style="color:#ff4444;text-align:center;margin-top:10px"></p>
+<p style="text-align:center;color:#555;font-size:11px;margin-top:15px">This page is hidden from users & Google</p>
+</div>
+
+<div class="box hidden" id="adminBox">
+<div class="logo"><img src="logo.png" style="height:45px"><p style="color:#f6d88a">ANWA SKILLS - ADMIN PANEL</p></div>
+<label>Hero Subtitle</label>
+<textarea id="heroSub"></textarea>
+<label>WhatsApp Number</label>
+<input id="wa">
+<div id="packsEdit"></div>
+<button onclick="save()">Save Changes - Update Website</button>
+<button onclick="logout()" style="background:#222;color:#fff">Logout</button>
+</div>
+
+<script>
+const USER="Anwar123"; const PASS="9366656977";
+let config = JSON.parse(localStorage.getItem('anwa_config') || 'null') || {
+  heroSub: "Work from home with our premium courses & referral program",
+  whatsapp: "919366656977",
+  packs: [
+    {name:"Starter Pack",price:249,cut:499,features:["5 Premium Courses","Basic Affiliate Access","Certificate","Lifetime Access"]},
+    {name:"Creator Pack",price:549,cut:999,features:["15 Premium Courses","High Commission","Personal Mentorship","Premium Tools"]},
+    {name:"Pro Business Pack",price:1099,cut:1999,features:["All 30+ Courses","80% Commission","1-1 Support","Resell Rights"]}
+  ]
+};
+function login(){
+  if(document.getElementById('u').value===USER && document.getElementById('p').value===PASS){
+    document.getElementById('loginBox').classList.add('hidden');
+    document.getElementById('adminBox').classList.remove('hidden');
+    loadForm();
+  }else{ document.getElementById('err').innerText="Wrong username/password"; }
+}
+function loadForm(){
+  document.getElementById('heroSub').value=config.heroSub;
+  document.getElementById('wa').value=config.whatsapp;
+  let h="";
+  config.packs.forEach((p,i)=>{
+    h+=`<div style="border:1px solid #333;padding:12px;border-radius:10px;margin:12px 0"><label>Pack ${i+1} Name</label><input id="n${i}" value="${p.name}"><label>Price</label><input id="pr${i}" type="number" value="${p.price}"><label>Cut Price</label><input id="cut${i}" value="${p.cut}"><label>Features (comma)</label><input id="f${i}" value="${p.features.join(',')}"></div>`;
+  });
+  document.getElementById('packsEdit').innerHTML=h;
+}
+function save(){
+  config.heroSub=document.getElementById('heroSub').value;
+  config.whatsapp=document.getElementById('wa').value;
+  config.packs.forEach((p,i)=>{
+    p.name=document.getElementById('n'+i).value;
+    p.price=document.getElementById('pr'+i).value;
+    p.cut=document.getElementById('cut'+i).value;
+    p.features=document.getElementById('f'+i).value.split(',');
+  });
+  localStorage.setItem('anwa_config', JSON.stringify(config));
+  alert('Saved! Now open anwaskills.me on this same phone to see new prices.');
+}
+function logout(){ location.reload(); }
+</script>
+</body>
+</html>to 
