@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RichPath | Learn. Grow. Build.</title>
+<meta name="description" content="Discover digital learning packages, eBooks and useful resources.">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:#f7f9f8;color:#17221c;line-height:1.6}
+a{text-decoration:none;color:inherit}
+header{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.96);border-bottom:1px solid #e5e9e6;backdrop-filter:blur(10px)}
+.nav{max-width:1180px;margin:auto;height:74px;padding:0 22px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:800;color:#168545}
+.logo-icon{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#20b65b,#087b38);color:white;display:flex;align-items:center;justify-content:center;font-weight:900}
+.nav-links{display:flex;align-items:center;gap:30px;font-size:15px;font-weight:600}
+.nav-links a{color:#53615a}.nav-links a:hover{color:#159447}
+.nav-buttons{display:flex;align-items:center;gap:10px}
+.login-btn{padding:11px 18px;border:1px solid #d8dfda;border-radius:10px;font-weight:700}
+.signup-btn{padding:11px 18px;border-radius:10px;background:#159447;color:white;font-weight:700}
+
+.hero{max-width:1180px;margin:auto;padding:80px 22px 70px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:60px}
+.hero-badge{display:inline-block;background:#e5f8eb;color:#11803d;border:1px solid #c8efd5;padding:8px 14px;border-radius:50px;font-size:13px;font-weight:700;margin-bottom:20px}
+.hero h1{font-size:clamp(42px,6vw,68px);line-height:1.05;letter-spacing:-2px;margin-bottom:22px}
+.hero h1 span{color:#159447}.hero p{color:#65736b;font-size:18px;max-width:600px;margin-bottom:30px}
+.hero-buttons{display:flex;gap:13px;flex-wrap:wrap}
+.primary-btn{background:#159447;color:white;padding:14px 23px;border-radius:11px;font-weight:700;display:inline-block;box-shadow:0 8px 20px rgba(21,148,71,.18)}
+.secondary-btn{background:white;border:1px solid #d9e0db;padding:14px 23px;border-radius:11px;font-weight:700}
+
+.hero-card{position:relative;min-height:400px;border-radius:28px;background:linear-gradient(145deg,#e8f8ed,#ccefd8);padding:30px;overflow:hidden}
+.hero-circle{position:absolute;width:280px;height:280px;background:#8bd9a5;opacity:.35;border-radius:50%;right:-80px;top:-70px}
+.ebook-card{position:absolute;width:220px;height:280px;background:white;border-radius:13px;box-shadow:0 20px 50px rgba(0,0,0,.15);left:50%;top:50%;transform:translate(-50%,-50%) rotate(-5deg);padding:25px;display:flex;flex-direction:column;justify-content:space-between}
+.ebook-card-top{color:#159447;font-size:12px;font-weight:800;text-transform:uppercase}
+.ebook-card h3{font-size:28px;line-height:1.1}.ebook-card-bottom{font-size:12px;color:#7b857f}
+
+section{padding:75px 22px}.section-container{max-width:1180px;margin:auto}
+.section-title{text-align:center;max-width:700px;margin:0 auto 45px}
+.section-title small{color:#159447;font-weight:800;text-transform:uppercase;letter-spacing:1px}
+.section-title h2{font-size:38px;margin:8px 0 12px}.section-title p{color:#69766f}
+
+.packages{background:white}
+.package-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.package{border:1px solid #e2e8e3;border-radius:18px;padding:28px;background:white;transition:.25s}
+.package:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(23,34,28,.08)}
+.package.featured{border:2px solid #159447;position:relative}.popular{position:absolute;right:18px;top:18px;background:#159447;color:white;padding:5px 9px;font-size:11px;border-radius:20px;font-weight:700}
+.package h3{font-size:22px;margin-bottom:8px}.package-description{color:#748078;font-size:14px;min-height:48px}
+.price{font-size:34px;font-weight:800;margin:20px 0}.price small{font-size:13px;color:#7b857f;font-weight:400}
+.package ul{list-style:none;margin-bottom:24px}.package li{padding:8px 0;color:#526058;font-size:14px}.package li::before{content:"✓";color:#159447;font-weight:800;margin-right:8px}
+.package-btn{width:100%;display:block;text-align:center;padding:13px;background:#159447;color:white;border-radius:10px;font-weight:700}
+
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}.step{background:white;border:1px solid #e4e9e5;padding:30px;border-radius:17px}
+.step-number{width:45px;height:45px;border-radius:12px;background:#e5f8eb;color:#159447;display:flex;align-items:center;justify-content:center;font-weight:800;margin-bottom:18px}
+.step h3{margin-bottom:8px}.step p{color:#6e7973;font-size:14px}
+
+.referral{background:#102319;color:white}.referral-box{max-width:1000px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.referral h2{font-size:40px;line-height:1.15;margin-bottom:15px}.referral p{color:#bdc9c1}
+.referral-list{display:grid;gap:14px}.referral-item{padding:17px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px}
+
+.faq{max-width:800px;margin:auto}details{background:white;border:1px solid #e2e8e3;border-radius:12px;padding:18px 20px;margin-bottom:12px}
+summary{cursor:pointer;font-weight:700}details p{color:#68746d;padding-top:12px;font-size:14px}
+
+footer{background:#09130d;color:white;padding:55px 22px 25px}.footer-grid{max-width:1180px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
+.footer-brand p{color:#aab6ae;max-width:330px;margin-top:14px;font-size:14px}footer h4{margin-bottom:15px}footer a{display:block;color:#aab6ae;margin:8px 0;font-size:14px}
+.copyright{max-width:1180px;margin:45px auto 0;padding-top:20px;border-top:1px solid #26342c;color:#89968e;font-size:13px}
+
+@media(max-width:850px){
+.nav-links{display:none}.hero{grid-template-columns:1fr;padding-top:55px}.hero-card{min-height:340px}
+.package-grid,.steps{grid-template-columns:1fr}.referral-box{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:520px){
+.nav{padding:0 15px}.logo{font-size:18px}.logo-icon{width:35px;height:35px}.login-btn{display:none}
+.hero{padding-left:17px;padding-right:17px}.hero h1{font-size:43px}.hero p{font-size:16px}
+section{padding:60px 17px}.section-title h2{font-size:30px}.referral h2{font-size:32px}.footer-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+<header>
+<nav class="nav">
+<a href="index.html" class="logo"><span class="logo-icon">R</span>RichPath</a>
+<div class="nav-links">
+<a href="#packages">Packages</a><a href="#how-it-works">How It Works</a><a href="#referral">Referral</a><a href="#faq">FAQ</a>
+</div>
+<div class="nav-buttons">
+<a href="login.html" class="login-btn">Login</a>
+<a href="register.html" class="signup-btn">Get Started</a>
+</div>
+</nav>
+</header>
+
+<main>
+<section class="hero">
+<div>
+<span class="hero-badge">DIGITAL LEARNING PLATFORM</span>
+<h1>Learn more.<br><span>Build your future.</span></h1>
+<p>Explore carefully organized digital learning packages, practical eBooks and useful resources designed to help you develop valuable knowledge and skills.</p>
+<div class="hero-buttons">
+<a href="#packages" class="primary-btn">Explore Packages →</a>
+<a href="#how-it-works" class="secondary-btn">How It Works</a>
+</div>
+</div>
+<div class="hero-card">
+<div class="hero-circle"></div>
+<div class="ebook-card">
+<div class="ebook-card-top">Digital Collection</div>
+<h3>Learn.<br>Grow.<br>Create.</h3>
+<div class="ebook-card-bottom">Premium eBook Resources</div>
+</div>
+</div>
+</section>
+
+<section class="packages" id="packages">
+<div class="section-container">
+<div class="section-title"><small>Our Packages</small><h2>Choose your learning package</h2><p>Select a package according to the type of digital resources you want to explore.</p></div>
+<div class="package-grid">
+<div class="package">
+<h3>Starter</h3><p class="package-description">A simple collection for getting started.</p>
+<div class="price">₹499 <small>one time</small></div>
+<ul><li>10+ Digital eBooks</li><li>Beginner resources</li><li>Lifetime access</li><li>Personal dashboard</li></ul>
+<a href="package.html?package=starter" class="package-btn">View Package</a>
+</div>
+<div class="package featured">
+<span class="popular">POPULAR</span><h3>Growth</h3><p class="package-description">A larger collection for continuous learning.</p>
+<div class="price">₹999 <small>one time</small></div>
+<ul><li>30+ Digital eBooks</li><li>Intermediate resources</li><li>Lifetime access</li><li>Personal dashboard</li></ul>
+<a href="package.html?package=growth" class="package-btn">View Package</a>
+</div>
+<div class="package">
+<h3>Premium</h3><p class="package-description">Our larger collection for advanced learners.</p>
+<div class="price">₹1,999 <small>one time</small></div>
+<ul><li>75+ Digital eBooks</li><li>Advanced resources</li><li>Lifetime access</li><li>Personal dashboard</li></ul>
+<a href="package.html?package=premium" class="package-btn">View Package</a>
+</div>
+</div>
+</div>
+</section>
+
+<section id="how-it-works">
+<div class="section-container">
+<div class="section-title"><small>Simple Process</small><h2>How it works</h2><p>Getting started takes only a few simple steps.</p></div>
+<div class="steps">
+<div class="step"><div class="step-number">01</div><h3>Create your account</h3><p>Register for an account and create your personal profile.</p></div>
+<div class="step"><div class="step-number">02</div><h3>Choose a package</h3><p>Explore the available packages and choose the resources that suit your interests.</p></div>
+<div class="step"><div class="step-number">03</div><h3>Access your resources</h3><p>After purchase, your available digital resources can be accessed from your account.</p></div>
+</div>
+</div>
+</section>
+
+<section class="referral" id="referral">
+<div class="referral-box">
+<div><h2>Share with your network.</h2><p>Our platform can include a referral system that allows registered users to share their referral link and track eligible referrals from their dashboard.</p></div>
+<div class="referral-list">
+<div class="referral-item"><strong>01 — Get your referral link</strong></div>
+<div class="referral-item"><strong>02 — Share your link</strong></div>
+<div class="referral-item"><strong>03 — Track referrals</strong></div>
+</div>
+</div>
+</section>
+
+<section id="faq">
+<div class="section-container">
+<div class="section-title"><small>FAQ</small><h2>Frequently asked questions</h2></div>
+<div class="faq">
+<details><summary>What do I receive after purchasing a package?</summary><p>Depending on the package, you can receive access to the digital resources included in that package.</p></details>
+<details><summary>Can I access my resources later?</summary><p>The platform is designed to provide access to purchased digital resources through your account.</p></details>
+<details><summary>How does the referral system work?</summary><p>Registered users can receive a unique referral link and track eligible referrals through their dashboard. Any rewards or commissions will be subject to the platform's published terms.</p></details>
+<details><summary>Can I use the website on my phone?</summary><p>Yes. The website is designed to work on phones, tablets and desktop computers.</p></details>
+</div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="footer-grid">
+<div class="footer-brand">
+<a href="index.html" class="logo"><span class="logo-icon">R</span>RichPath</a>
+<p>A digital learning platform for discovering useful eBooks and educational resources.</p>
+</div>
+<div><h4>Platform</h4><a href="#packages">Packages</a><a href="#how-it-works">How It Works</a><a href="#referral">Referral</a></div>
+<div><h4>Account</h4><a href="login.html">Login</a><a href="register.html">Register</a><a href="dashboard.html">Dashboard</a></div>
+<div><h4>Information</h4><a href="about.html">About Us</a><a href="contact.html">Contact</a><a href="#faq">FAQ</a></div>
+</div>
+<div class="copyright">© 2026 RichPath. All rights reserved.</div>
+</footer>
+</body>
+</html>
