@@ -3,9 +3,83 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AnwaSkills.me - Learn & Earn</title>
+<title>AnwaSkills.me - Learn & Earn Platform</title>
 <style>
-body{margin:0;font-family:system-ui;background:#f6f6ff;color:#111}
-.top{background:#000;color:#FFD700;padding:18px;text-align:center;font-weight:900;font-size:24px;letter-spacing:1px}
-.hero{background:#fff;margin:14px;padding:20px;border-radius:16px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.1)}
-.hero h1
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui;background:#f7f7ff}
+header{background:#000;color:#FFD700;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:99}
+.logo{font-weight:900;font-size:22px}
+.menu a{color:#fff;text-decoration:none;margin-left:14px;font-weight:600;font-size:14px}
+.hero{background:linear-gradient(135deg,#000 60%,#222);color:#fff;padding:30px 16px;text-align:center}
+.hero h1{font-size:28px;line-height:1.2;margin:0}
+.timer{margin:12px auto;background:#FFD700;color:#000;display:inline-block;padding:8px 14px;border-radius:20px;font-weight:900}
+.stats{display:flex;gap:10px;justify-content:center;margin:16px 0}
+.stat{background:#fff;color:#000;padding:10px 14px;border-radius:12px;font-weight:800;box-shadow:0 4px 10px rgba(0,0,0,.2)}
+.card{background:#fff;margin:16px;border-radius:16px;padding:18px;box-shadow:0 6px 20px rgba(0,0,0,.08);border-left:6px solid #FFD700}
+.price{font-size:32px;font-weight:900}
+.btn{display:block;text-align:center;padding:14px;border-radius:12px;text-decoration:none;font-weight:900;margin-top:12px;cursor:pointer;border:none;width:100%}
+.gold{background:#FFD700;color:#000}.black{background:#000;color:#FFD700}.green{background:#00c853;color:#fff}
+.grid{display:grid;grid-template-columns:1fr;gap:10px}
+.testi{background:#111;color:#fff;margin:16px;padding:14px;border-radius:12px}
+.faq{background:#fff;margin:8px 16px;border-radius:10px;padding:12px;cursor:pointer}
+.faq p{display:none;margin-top:8px;color:#444}
+.footer{padding:20px;text-align:center;color:#777;font-size:12px}
+input{width:100%;padding:12px;border-radius:10px;border:1px solid #ccc;margin:8px 0}
+</style>
+</head>
+<body>
+<header><div class="logo">ANWASKILLS.ME</div><div class="menu"><a href="#packs">Packs</a><a href="#faq">FAQ</a></div></header>
+
+<div class="hero">
+<h1>Learn Digital Skills & Earn Daily in Tripura</h1>
+<p>Clone of RichInd Model - Made by Anwar, Agartala</p>
+<div id="timer" class="timer">Offer Ends: 12:34:56</div>
+<div class="stats">
+<div class="stat"><span id="students">1248</span>+ Students</div>
+<div class="stat">4.8★ Rating</div>
+<div class="stat">Agartala HQ</div>
+</div>
+<input id="myLink" value="https://anwaskills.me?ref=anwar" readonly>
+<button class="btn gold" onclick="copyLink()">📋 Copy My Referral Link</button>
+</div>
+
+<div id="packs">
+<div class="card"><h3>Starter - Rs249</h3><div class="price">Rs249</div><p>✅ 2 Ebooks + Reels Course<br>✅ 30% Commission</p><button class="btn gold" onclick="buy('Starter Rs249 - 249')">Buy via WhatsApp</button></div>
+<div class="card" style="border-color:#000"><h3>Silver ⭐ - Rs549</h3><div class="price">Rs549</div><p>✅ 5 Courses + Certificate<br>✅ 50% Commission = Rs275/sale</p><button class="btn black" onclick="buy('Silver Rs549 - 549')">Buy Silver</button></div>
+<div class="card" style="border-color:#00c853"><h3>Pro - Rs1999 BEST</h3><div class="price">Rs1999</div><p>✅ All Courses + Mentorship<br>✅ 80% Commission = Rs1599/sale</p><button class="btn green" onclick="buy('Pro Rs1999 - 1999')">Buy Pro</button></div>
+</div>
+
+<div class="testi" id="testi">Loading reviews...</div>
+
+<div id="faq">
+<div class="faq" onclick="toggleFaq(this)"><b>Q: Payment kaise kare?</b><p>A: WhatsApp button click karo, direct UPI/GPay.</p></div>
+<div class="faq" onclick="toggleFaq(this)"><b>Q: Commission kaise milega?</b><p>A: Har sale ka 30-80% direct bank me.</p></div>
+<div class="faq" onclick="toggleFaq(this)"><b>Q: Tripura me valid hai?</b><p>A: Haan, full India, specially Tripura students ke liye banaya.</p></div>
+</div>
+
+<div class="footer">© AnwaSkills.me | Change WhatsApp number in code line 68</div>
+
+<script>
+// CONFIG - CHANGE THIS
+const WHATSAPP_NUMBER = "919233589538";
+
+// 1. Timer Function
+let t=43200; setInterval(()=>{t--; let h=Math.floor(t/3600),m=Math.floor(t%3600/60),s=t%60; document.getElementById('timer').innerText=`Offer Ends: ${h}:${m}:${s}`;},1000);
+
+// 2. Student Counter Animation
+let count=1248; setInterval(()=>{count+=Math.floor(Math.random()*2); document.getElementById('students').innerText=count;},2000);
+
+// 3. Buy Function
+function buy(pack){ window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=Hi Anwar, I want ${pack} from anwaskills.me`,'_blank'); }
+
+// 4. Copy Link Function
+function copyLink(){ let i=document.getElementById('myLink'); i.select(); document.execCommand('copy'); alert('Referral Link Copied! Share and Earn'); }
+
+// 5. FAQ Toggle
+function toggleFaq(el){ let p=el.querySelector('p'); p.style.display=p.style.display==='block'?'none':'block'; }
+
+// 6. Testimonial Rotator
+const reviews=["⭐⭐⭐⭐⭐ Riya from Agartala earned Rs4500 in 7 days - Silver Pack","⭐⭐⭐⭐⭐ Arjun Tripura - Pro pack best investment","⭐⭐⭐⭐⭐ Priya - Starter se start kiya, ab Rs1000/day"];
+let r=0; setInterval(()=>{ document.getElementById('testi').innerText=reviews[r%3]; r++; },3000);
+</script>
+</body>
+</html>
