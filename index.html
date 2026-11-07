@@ -1,0 +1,546 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#102d65">
+<title>AnwaSkills | Learn, Grow, Succeed</title>
+
+<style>
+:root{
+--blue:#1762df;
+--dark:#102d65;
+--bg:#f5f7fc;
+--white:#fff;
+--text:#17243b;
+--muted:#78849a;
+--border:#e5eaf2;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Arial,sans-serif;background:var(--bg);color:var(--text)}
+button,input{font:inherit}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+.container{width:90%;max-width:1150px;margin:auto}
+
+/* HEADER */
+header{
+background:white;position:sticky;top:0;z-index:20;
+box-shadow:0 2px 12px #0000000b;
+}
+.nav{
+height:75px;display:flex;align-items:center;
+justify-content:space-between;
+}
+.logo{font-size:27px;font-weight:900;color:var(--blue)}
+.logo span{color:var(--dark)}
+.nav-links{display:flex;align-items:center;gap:25px}
+.nav-links a{font-size:14px;font-weight:bold}
+.nav-links a:hover{color:var(--blue)}
+.menu{display:none;background:none;color:var(--dark);font-size:26px;border:0}
+.btn{
+display:inline-block;background:var(--blue);color:white;
+border:0;padding:14px 23px;border-radius:9px;
+font-weight:bold;text-align:center;
+}
+.btn:hover{background:#0d4db9}
+.btn-light{background:white;color:var(--blue)}
+.btn-outline{background:white;color:var(--blue);border:1px solid var(--blue)}
+
+/* HERO */
+.hero{
+padding:90px 0;
+background:linear-gradient(120deg,#e8efff,#fff);
+}
+.hero-content{
+display:grid;grid-template-columns:1.2fr .8fr;
+gap:45px;align-items:center;
+}
+.tag{
+display:inline-block;background:#e0ebff;color:var(--blue);
+padding:8px 13px;border-radius:20px;
+font-size:12px;font-weight:bold;
+}
+.hero h1{font-size:55px;line-height:1.15;margin:22px 0}
+.hero h1 span{color:var(--blue)}
+.hero p{color:var(--muted);line-height:1.8;margin-bottom:28px}
+.hero-art{
+background:linear-gradient(145deg,#1762df,#102d65);
+color:white;border-radius:25px;padding:65px 25px;
+text-align:center;box-shadow:0 20px 45px #1762df30;
+}
+.hero-art h2{font-size:75px}
+.hero-art h3{margin-top:12px}
+.hero-art p{color:#dce7ff;margin:12px 0 0}
+
+/* GENERAL */
+section{padding:75px 0}
+.heading{text-align:center;margin-bottom:42px}
+.heading h2{font-size:32px;margin-bottom:12px}
+.heading p{color:var(--muted);line-height:1.7}
+.section-white{background:white}
+
+/* PACKAGES */
+.packages{
+display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
+}
+.package{
+background:white;border:1px solid var(--border);
+border-radius:17px;padding:28px;
+box-shadow:0 8px 25px #14213d08;
+}
+.package.featured{border:2px solid var(--blue)}
+.package h3{font-size:24px}
+.package .description{color:var(--muted);font-size:14px;margin-top:10px}
+.price{font-size:39px;font-weight:900;margin:22px 0}
+.price small{font-size:14px;color:var(--muted)}
+.package ul{list-style:none;margin:20px 0}
+.package li{
+padding:12px 0;border-bottom:1px solid #edf0f5;
+font-size:14px;color:#536078;
+}
+.package li:before{content:"✓ ";color:var(--blue);font-weight:bold}
+.package button{width:100%}
+.popular{
+display:inline-block;background:#eaf1ff;color:var(--blue);
+font-size:11px;font-weight:bold;padding:7px 11px;
+border-radius:20px;margin-bottom:15px;
+}
+.commission-note{
+margin-top:25px;text-align:center;color:var(--muted);
+font-size:13px;line-height:1.8;
+}
+
+/* HOW IT WORKS */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+.step{text-align:center;padding:25px}
+.circle{
+width:58px;height:58px;border-radius:16px;
+background:#eaf1ff;color:var(--blue);
+display:grid;place-items:center;
+font-size:22px;font-weight:bold;margin:0 auto 20px;
+}
+.step p{color:var(--muted);line-height:1.7;margin-top:12px}
+
+/* COMMISSION TABLE */
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;background:white}
+th,td{padding:17px;text-align:center;border-bottom:1px solid var(--border)}
+th{background:#eaf1ff;color:var(--dark)}
+td{font-size:14px}
+
+/* CTA */
+.cta{
+background:var(--dark);color:white;text-align:center;
+padding:55px 25px;border-radius:22px;
+}
+.cta p{color:#dce7ff;line-height:1.8;margin:18px auto 25px;max-width:600px}
+
+/* FOOTER */
+footer{background:#0c1932;color:#c8d3e8;padding:45px 0;text-align:center}
+footer h2{color:white}
+footer p{font-size:13px;margin-top:13px;line-height:1.8}
+
+/* MODALS */
+.modal{
+display:none;position:fixed;inset:0;
+background:#07152ccc;z-index:100;
+align-items:center;justify-content:center;padding:18px;
+}
+.modal.show{display:flex}
+.modal-box{
+background:white;width:100%;max-width:430px;
+padding:30px;border-radius:18px;
+position:relative;max-height:90vh;overflow:auto;
+}
+.close{
+position:absolute;right:17px;top:12px;
+background:none;color:#333;font-size:26px;border:0;
+}
+.modal-box h2{margin-bottom:10px}
+.modal-box .sub{color:var(--muted);font-size:14px;margin-bottom:22px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:13px;font-weight:bold;margin-bottom:8px}
+.field input{
+width:100%;padding:13px;border:1px solid #dce3ef;
+border-radius:9px;outline:none;
+}
+.field input:focus{border-color:var(--blue)}
+.modal-box .submit{width:100%}
+.switch{text-align:center;font-size:13px;color:var(--muted);margin-top:18px}
+.switch button{background:none;color:var(--blue);border:0;font-weight:bold}
+.notice{
+background:#fff7e5;color:#79591a;padding:12px;
+border-radius:9px;font-size:12px;line-height:1.6;margin:15px 0;
+}
+.selected-package{
+background:#eaf1ff;padding:13px;border-radius:9px;
+color:var(--blue);font-weight:bold;margin-bottom:18px;
+}
+
+/* MOBILE */
+@media(max-width:800px){
+.container{width:90%}
+.menu{display:block}
+.nav-links{
+display:none;position:absolute;top:75px;left:0;width:100%;
+background:white;padding:22px;flex-direction:column;
+align-items:stretch;gap:20px;
+}
+.nav-links.open{display:flex}
+.nav-links a{text-align:center}
+.hero{padding:65px 0}
+.hero-content{grid-template-columns:1fr;text-align:center}
+.hero h1{font-size:42px}
+.hero-art{padding:45px 20px}
+.packages,.steps{grid-template-columns:1fr}
+.heading h2{font-size:27px}
+section{padding:60px 0}
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+<div class="container nav">
+<a class="logo" href="#home">Anwa<span>Skills</span></a>
+
+<button class="menu" onclick="toggleMenu()">☰</button>
+
+<nav class="nav-links" id="navLinks">
+<a href="#home" onclick="closeMenu()">Home</a>
+<a href="#packages" onclick="closeMenu()">Packages</a>
+<a href="#how" onclick="closeMenu()">How It Works</a>
+<a href="#commission" onclick="closeMenu()">Commission</a>
+<a href="#" class="btn" onclick="openModal('login');closeMenu();return false">Login / Join</a>
+</nav>
+</div>
+</header>
+
+<!-- HERO -->
+<main>
+<section class="hero" id="home">
+<div class="container hero-content">
+<div>
+<span class="tag">WELCOME TO ANWASKILLS</span>
+<h1>Learn Skills.<br>Build Your <span>Future.</span></h1>
+<p>
+Welcome to AnwaSkills. Discover educational materials,
+develop useful digital skills and explore new opportunities
+to grow your knowledge.
+</p>
+<a href="#packages" class="btn">Explore Packages →</a>
+</div>
+
+<div class="hero-art">
+<h2>AS</h2>
+<h3>Learn. Grow. Succeed.</h3>
+<p>Your journey starts here.</p>
+</div>
+</div>
+</section>
+
+<!-- PACKAGES -->
+<section id="packages">
+<div class="container">
+<div class="heading">
+<h2>Choose Your Package</h2>
+<p>Select the package that suits your learning goals.</p>
+</div>
+
+<div class="packages">
+
+<div class="package">
+<h3>Basic</h3>
+<p class="description">Start your learning journey.</p>
+<div class="price">₹300</div>
+<ul>
+<li>Basic learning materials</li>
+<li>Student dashboard</li>
+<li>Personal referral link</li>
+<li>₹150 eligible commission</li>
+</ul>
+<button class="btn" onclick="choosePackage('Basic')">Choose Basic</button>
+</div>
+
+<div class="package featured">
+<span class="popular">POPULAR</span>
+<h3>Standard</h3>
+<p class="description">Develop your digital knowledge.</p>
+<div class="price">₹600</div>
+<ul>
+<li>Standard learning materials</li>
+<li>Student dashboard</li>
+<li>Personal referral link</li>
+<li>₹300 eligible commission</li>
+</ul>
+<button class="btn" onclick="choosePackage('Standard')">Choose Standard</button>
+</div>
+
+<div class="package">
+<h3>Premium</h3>
+<p class="description">Explore premium learning materials.</p>
+<div class="price">₹1,000</div>
+<ul>
+<li>Premium learning materials</li>
+<li>Student dashboard</li>
+<li>Personal referral link</li>
+<li>₹500 eligible commission</li>
+</ul>
+<button class="btn" onclick="choosePackage('Premium')">Choose Premium</button>
+</div>
+
+</div>
+
+<p class="commission-note">
+Commission is based on the referrer's own active package.
+A referral purchase must be genuine and verified.
+</p>
+</div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section-white" id="how">
+<div class="container">
+<div class="heading">
+<h2>How AnwaSkills Works</h2>
+<p>Three simple steps to get started.</p>
+</div>
+
+<div class="steps">
+<div class="step">
+<div class="circle">01</div>
+<h3>Choose a Package</h3>
+<p>Select a package and complete the purchase process.</p>
+</div>
+
+<div class="step">
+<div class="circle">02</div>
+<h3>Access Learning</h3>
+<p>Get access to your package's learning materials after verification.</p>
+</div>
+
+<div class="step">
+<div class="circle">03</div>
+<h3>Refer & Earn</h3>
+<p>Share your referral link and receive eligible commissions from genuine sales.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- COMMISSION -->
+<section id="commission">
+<div class="container">
+<div class="heading">
+<h2>Referral Commission</h2>
+<p>Your commission depends on your own package.</p>
+</div>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Your Package</th>
+<th>Basic Sale</th>
+<th>Standard Sale</th>
+<th>Premium Sale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Basic</td>
+<td>₹150</td>
+<td>₹150</td>
+<td>₹150</td>
+</tr>
+<tr>
+<td>Standard</td>
+<td>₹300</td>
+<td>₹300</td>
+<td>₹300</td>
+</tr>
+<tr>
+<td>Premium</td>
+<td>₹500</td>
+<td>₹500</td>
+<td>₹500</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p class="commission-note">
+Example: A Basic member referring a Premium customer receives
+the Basic commission of ₹150, subject to verification.
+</p>
+</div>
+</section>
+
+<!-- CTA -->
+<section>
+<div class="container">
+<div class="cta">
+<h2>Start Your AnwaSkills Journey</h2>
+<p>
+Explore learning packages, develop useful skills and
+share genuine learning opportunities with others.
+</p>
+<a href="#packages" class="btn btn-light">Get Started</a>
+</div>
+</div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+<div class="container">
+<h2>AnwaSkills</h2>
+<p>Learn. Grow. Succeed.</p>
+<p>Contact: support@anwaskills.me</p>
+<p>© 2026 AnwaSkills. All rights reserved.</p>
+<p>Terms & Conditions | Privacy Policy | Contact Us</p>
+</div>
+</footer>
+
+<!-- AUTH MODAL -->
+<div class="modal" id="authModal" onclick="outsideClose(event)">
+<div class="modal-box">
+<button class="close" onclick="closeModal()">×</button>
+
+<!-- LOGIN -->
+<div id="loginForm">
+<h2>Welcome Back!</h2>
+<p class="sub">Login to your AnwaSkills account.</p>
+
+<div class="field">
+<label>Email Address</label>
+<input type="email" id="loginEmail" placeholder="Enter your email">
+</div>
+
+<div class="field">
+<label>Password</label>
+<input type="password" id="loginPassword" placeholder="Enter password">
+</div>
+
+<button class="btn submit" onclick="demoMessage()">Login</button>
+
+<div class="switch">
+New to AnwaSkills?
+<button onclick="showSignup()">Create Account</button>
+</div>
+</div>
+
+<!-- SIGNUP -->
+<div id="signupForm" style="display:none">
+<h2>Create Account</h2>
+<p class="sub">Join AnwaSkills today.</p>
+
+<div id="packageSelected" class="selected-package" style="display:none"></div>
+
+<div class="field">
+<label>Full Name</label>
+<input type="text" id="fullName" placeholder="Enter full name">
+</div>
+
+<div class="field">
+<label>Username</label>
+<input type="text" id="username" placeholder="Choose username">
+</div>
+
+<div class="field">
+<label>Email Address</label>
+<input type="email" id="signupEmail" placeholder="Enter email">
+</div>
+
+<div class="field">
+<label>Age</label>
+<input type="number" id="age" placeholder="Enter age" min="13">
+</div>
+
+<div class="field">
+<label>Password</label>
+<input type="password" id="signupPassword" placeholder="Create password">
+</div>
+
+<div class="notice">
+This is a frontend preview. Registration, secure authentication,
+payments and account creation require backend integration.
+</div>
+
+<button class="btn submit" onclick="demoMessage()">Create Account</button>
+
+<div class="switch">
+Already have an account?
+<button onclick="showLogin()">Login</button>
+</div>
+</div>
+
+</div>
+</div>
+
+<script>
+let selectedPackage = "";
+
+function toggleMenu(){
+document.getElementById("navLinks").classList.toggle("open");
+}
+
+function closeMenu(){
+document.getElementById("navLinks").classList.remove("open");
+}
+
+function openModal(type){
+document.getElementById("authModal").classList.add("show");
+if(type==="signup"){
+showSignup();
+}else{
+showLogin();
+}
+}
+
+function closeModal(){
+document.getElementById("authModal").classList.remove("show");
+}
+
+function outsideClose(event){
+if(event.target.id==="authModal"){
+closeModal();
+}
+}
+
+function showLogin(){
+document.getElementById("loginForm").style.display="block";
+document.getElementById("signupForm").style.display="none";
+}
+
+function showSignup(){
+document.getElementById("loginForm").style.display="none";
+document.getElementById("signupForm").style.display="block";
+
+let selected=document.getElementById("packageSelected");
+
+if(selectedPackage){
+selected.style.display="block";
+selected.textContent="Selected Package: "+selectedPackage;
+}else{
+selected.style.display="none";
+}
+}
+
+function choosePackage(name){
+selectedPackage=name;
+openModal("signup");
+}
+
+function demoMessage(){
+alert("This is a frontend preview. Supabase authentication and payment integration are not connected yet.");
+}
+</script>
+
+</body>
+</html>
