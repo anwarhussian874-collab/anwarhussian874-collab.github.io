@@ -1,0 +1,447 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AnwaSkills | Learn. Grow. Earn.</title>
+
+<meta name="description" content="Learn digital skills and build your future with AnwaSkills.">
+
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+
+ font-family:Arial,sans-serif;
+
+ background:#f7f9ff;color:#14213d;
+
+}
+
+header{
+
+ background:#fff;padding:17px 7%;
+
+ display:flex;justify-content:space-between;
+
+ align-items:center;position:sticky;top:0;z-index:10;
+
+ box-shadow:0 2px 15px #1020400d;
+
+}
+
+.logo{font-size:25px;font-weight:800;color:#155eef}
+
+.logo span{color:#172b4d}
+
+nav{display:flex;gap:25px;align-items:center}
+
+nav a{text-decoration:none;color:#33415c;font-size:14px}
+
+.btn{
+
+ display:inline-block;background:#155eef;color:white;
+
+ padding:13px 23px;border-radius:9px;
+
+ text-decoration:none;font-weight:bold;border:0;cursor:pointer;
+
+}
+
+.btn:hover{background:#0848c7}
+
+.hero{
+
+ padding:85px 8%;display:flex;align-items:center;
+
+ justify-content:space-between;gap:40px;
+
+ background:linear-gradient(120deg,#eaf1ff,#fff);
+
+}
+
+.hero-content{max-width:580px}
+
+.tag{color:#155eef;font-weight:bold;font-size:13px}
+
+h1{font-size:52px;line-height:1.15;margin:20px 0}
+
+h1 span{color:#155eef}
+
+.hero p{color:#65728a;line-height:1.8;margin-bottom:25px}
+
+.hero-art{
+
+ background:linear-gradient(145deg,#155eef,#6c9dff);
+
+ color:white;padding:45px;border-radius:25px;
+
+ min-width:280px;text-align:center;
+
+ box-shadow:0 20px 45px #155eef35;
+
+}
+
+.hero-art strong{font-size:65px;display:block}
+
+section{padding:75px 8%}
+
+.section-title{text-align:center;margin-bottom:40px}
+
+.section-title h2{font-size:32px;margin-bottom:12px}
+
+.section-title p{color:#758198}
+
+.packages{
+
+ display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
+
+}
+
+.card{
+
+ background:#fff;border:1px solid #e8edfa;
+
+ border-radius:18px;padding:30px;
+
+ box-shadow:0 8px 25px #14213d08;
+
+}
+
+.card.featured{border:2px solid #155eef;transform:translateY(-8px)}
+
+.card h3{font-size:22px;margin-bottom:15px}
+
+.price{font-size:36px;font-weight:800;margin:15px 0}
+
+.price small{font-size:14px;color:#758198}
+
+.card p{color:#758198;line-height:1.7;margin-bottom:22px}
+
+.card ul{list-style:none;margin:20px 0}
+
+.card li{padding:10px 0;border-bottom:1px solid #edf0f7;font-size:14px}
+
+.card li:before{content:"✓ ";color:#155eef;font-weight:bold}
+
+.card .btn{display:block;text-align:center}
+
+.steps{
+
+ display:grid;grid-template-columns:repeat(3,1fr);gap:25px;
+
+}
+
+.step{text-align:center;padding:25px}
+
+.number{
+
+ width:55px;height:55px;background:#eaf1ff;color:#155eef;
+
+ border-radius:15px;display:grid;place-items:center;
+
+ font-size:23px;font-weight:bold;margin:0 auto 20px;
+
+}
+
+.step p{color:#758198;line-height:1.7;margin-top:12px}
+
+.referral{
+
+ background:#102c63;color:white;text-align:center;
+
+ border-radius:22px;padding:55px 25px;
+
+}
+
+.referral p{color:#d2dcf4;line-height:1.8;margin:15px auto;max-width:650px}
+
+footer{
+
+ background:#0d1b36;color:#c8d3e8;
+
+ padding:35px 8%;text-align:center;
+
+}
+
+footer strong{color:white;font-size:22px}
+
+footer p{font-size:13px;margin-top:12px;line-height:1.7}
+
+@media(max-width:800px){
+
+ .hero{flex-direction:column;text-align:center;padding:65px 6%}
+
+ h1{font-size:39px}
+
+ .packages,.steps{grid-template-columns:1fr}
+
+ .card.featured{transform:none}
+
+ nav{gap:12px}
+
+ nav a{font-size:12px}
+
+ header{padding:15px 4%}
+
+ .logo{font-size:20px}
+
+}
+
+@media(max-width:430px){
+
+ nav a:not(.btn){display:none}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+ <div class="logo">Anwa<span>Skills</span></div>
+
+ <nav>
+
+  <a href="#home">Home</a>
+
+  <a href="#packages">Packages</a>
+
+  <a href="#how">How it works</a>
+
+  <a href="#login" class="btn">Login</a>
+
+ </nav>
+
+</header>
+
+<main>
+
+<section class="hero" id="home">
+
+ <div class="hero-content">
+
+  <span class="tag">WELCOME TO ANWASKILLS</span>
+
+  <h1>Learn Skills.<br>Build Your <span>Future.</span></h1>
+
+  <p>
+
+   Discover digital learning opportunities, develop useful skills
+
+   and share your learning journey with others through AnwaSkills.
+
+  </p>
+
+  <a href="#packages" class="btn">Explore Packages →</a>
+
+ </div>
+
+ <div class="hero-art">
+
+  <strong>AS</strong>
+
+  <h2>Learn. Grow. Succeed.</h2>
+
+  <p style="margin-top:12px">Your learning journey starts here.</p>
+
+ </div>
+
+</section>
+
+<section id="packages">
+
+ <div class="section-title">
+
+  <h2>Choose Your Package</h2>
+
+  <p>Start learning with a package that suits you.</p>
+
+ </div>
+
+ <div class="packages">
+
+  <div class="card">
+
+   <h3>Basic</h3>
+
+   <p>Start your learning journey.</p>
+
+   <div class="price">₹300</div>
+
+   <ul>
+
+    <li>Basic learning content</li>
+
+    <li>Student dashboard</li>
+
+    <li>Personal referral link</li>
+
+    <li>₹150 direct referral commission*</li>
+
+   </ul>
+
+   <a href="#login" class="btn">Get Started</a>
+
+  </div>
+
+  <div class="card featured">
+
+   <h3>Standard</h3>
+
+   <p>Develop more digital skills.</p>
+
+   <div class="price">₹600</div>
+
+   <ul>
+
+    <li>Standard learning content</li>
+
+    <li>Student dashboard</li>
+
+    <li>Personal referral link</li>
+
+    <li>₹300 direct referral commission*</li>
+
+   </ul>
+
+   <a href="#login" class="btn">Get Started</a>
+
+  </div>
+
+  <div class="card">
+
+   <h3>Premium</h3>
+
+   <p>Access the premium learning package.</p>
+
+   <div class="price">₹1,000</div>
+
+   <ul>
+
+    <li>Premium learning content</li>
+
+    <li>Student dashboard</li>
+
+    <li>Personal referral link</li>
+
+    <li>₹500 direct referral commission*</li>
+
+   </ul>
+
+   <a href="#login" class="btn">Get Started</a>
+
+  </div>
+
+ </div>
+
+ <p style="text-align:center;color:#758198;font-size:12px;margin-top:25px">
+
+ *Commissions are subject to verified genuine sales, eligibility and platform terms.
+
+ Commission is based on the referrer's active package, not the buyer's package.
+
+ </p>
+
+</section>
+
+<section id="how" style="background:#fff">
+
+ <div class="section-title">
+
+  <h2>How AnwaSkills Works</h2>
+
+  <p>Three simple steps to get started.</p>
+
+ </div>
+
+ <div class="steps">
+
+  <div class="step">
+
+   <div class="number">01</div>
+
+   <h3>Choose a Package</h3>
+
+   <p>Select a learning package and complete the purchase.</p>
+
+  </div>
+
+  <div class="step">
+
+   <div class="number">02</div>
+
+   <h3>Learn New Skills</h3>
+
+   <p>Access your learning materials through your student dashboard.</p>
+
+  </div>
+
+  <div class="step">
+
+   <div class="number">03</div>
+
+   <h3>Share & Earn</h3>
+
+   <p>Share your referral link. Eligible commissions are credited after verified purchases.</p>
+
+  </div>
+
+ </div>
+
+</section>
+
+<section>
+
+ <div class="referral">
+
+  <h2>Start Your Journey With AnwaSkills</h2>
+
+  <p>
+
+   Learn new skills, explore opportunities and grow through
+
+   genuine referrals.
+
+  </p>
+
+  <a href="#packages" class="btn" style="background:white;color:#155eef">
+
+   View Packages
+
+  </a>
+
+ </div>
+
+</section>
+
+</main>
+
+<footer>
+
+ <strong>AnwaSkills</strong>
+
+ <p>Learn. Grow. Succeed.</p>
+
+ <p>© 2026 AnwaSkills. All rights reserved.</p>
+
+ <p>Referral commissions are subject to verification and platform terms.</p>
+
+</footer>
+
+</body>
+
+</html>
