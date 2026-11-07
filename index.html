@@ -1,0 +1,405 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#102d65">
+<title>AnwaSkills | Learn. Grow. Succeed.</title>
+
+<style>
+:root {
+  --blue:#155eef;
+  --dark:#102d65;
+  --light:#f4f7ff;
+  --text:#172b4d;
+  --muted:#718096;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Arial,sans-serif;
+  background:var(--light);
+  color:var(--text);
+}
+button,a{font-family:inherit}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer}
+header{
+  height:75px;background:white;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 7%;position:sticky;top:0;z-index:20;
+  box-shadow:0 2px 15px #0000000c;
+}
+.logo{font-size:25px;font-weight:900;color:var(--blue)}
+.logo span{color:var(--dark)}
+nav{display:flex;align-items:center;gap:25px}
+nav a{font-size:14px;font-weight:600}
+nav a:hover{color:var(--blue)}
+.btn{
+  border:0;background:var(--blue);color:white;
+  padding:13px 22px;border-radius:9px;
+  font-weight:bold;display:inline-block;
+}
+.btn:hover{background:#0848c7}
+.btn-outline{
+  background:white;color:var(--blue);
+  border:1px solid var(--blue);
+}
+.menu-btn{display:none;background:none;border:0;font-size:25px}
+.hero{
+  padding:95px 8%;display:grid;
+  grid-template-columns:1.2fr .8fr;
+  align-items:center;gap:45px;
+  background:linear-gradient(120deg,#e9f0ff,#fff);
+}
+.tag{color:var(--blue);font-size:13px;font-weight:bold}
+.hero h1{font-size:55px;line-height:1.13;margin:20px 0}
+.hero h1 span{color:var(--blue)}
+.hero p{color:var(--muted);line-height:1.8;margin-bottom:28px}
+.hero-art{
+  background:linear-gradient(145deg,#155eef,#102d65);
+  color:white;border-radius:28px;padding:65px 25px;
+  text-align:center;box-shadow:0 20px 50px #155eef35;
+}
+.hero-art strong{font-size:85px;display:block}
+.hero-art p{color:#dce7ff;margin:12px 0 0}
+section{padding:75px 8%}
+.section-heading{text-align:center;margin-bottom:42px}
+.section-heading h2{font-size:32px;margin-bottom:12px}
+.section-heading p{color:var(--muted);line-height:1.6}
+.packages{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:23px;
+}
+.package{
+  background:white;padding:30px;border-radius:18px;
+  border:1px solid #e4eaf5;
+  box-shadow:0 8px 25px #14213d08;
+}
+.package.featured{border:2px solid var(--blue)}
+.package h3{font-size:23px}
+.package .price{font-size:38px;font-weight:900;margin:18px 0}
+.package .price small{font-size:14px;color:var(--muted)}
+.package p{color:var(--muted);line-height:1.6}
+.package ul{list-style:none;margin:23px 0}
+.package li{padding:12px 0;border-bottom:1px solid #edf0f7;font-size:14px}
+.package li:before{content:"✓ ";color:var(--blue);font-weight:bold}
+.package .btn{width:100%;text-align:center}
+.popular{
+  display:inline-block;background:#eaf1ff;color:var(--blue);
+  padding:6px 11px;border-radius:20px;font-size:11px;
+  font-weight:bold;margin-bottom:15px;
+}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+.step{text-align:center;padding:25px}
+.step-number{
+  width:55px;height:55px;border-radius:16px;
+  background:#eaf1ff;color:var(--blue);
+  display:grid;place-items:center;
+  font-size:22px;font-weight:bold;margin:0 auto 20px;
+}
+.step p{color:var(--muted);line-height:1.7;margin-top:12px}
+.referral{
+  background:var(--dark);color:white;
+  border-radius:24px;text-align:center;padding:55px 25px;
+}
+.referral p{color:#dce7ff;line-height:1.8;margin:15px auto 25px;max-width:650px}
+footer{background:#0c1932;color:#bdc9df;padding:40px 8%;text-align:center}
+footer strong{font-size:23px;color:white}
+footer p{font-size:13px;margin-top:12px;line-height:1.7}
+.modal{
+  position:fixed;inset:0;background:#07152dcc;
+  display:none;align-items:center;justify-content:center;
+  z-index:100;padding:18px;
+}
+.modal.show{display:flex}
+.modal-content{
+  background:white;width:100%;max-width:420px;
+  border-radius:20px;padding:30px;position:relative;
+  max-height:90vh;overflow:auto;
+}
+.close{
+  position:absolute;right:20px;top:17px;
+  border:0;background:none;font-size:25px;color:#64748b;
+}
+.modal-content h2{margin-bottom:8px}
+.modal-content>p{color:var(--muted);font-size:14px;margin-bottom:22px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:13px;font-weight:bold;margin-bottom:7px}
+.field input{
+  width:100%;padding:13px;border:1px solid #dce3ef;
+  border-radius:9px;font-size:15px;outline:none;
+}
+.field input:focus{border-color:var(--blue)}
+.modal-content .btn{width:100%}
+.switch{text-align:center;font-size:13px;margin-top:18px;color:var(--muted)}
+.switch button{border:0;background:none;color:var(--blue);font-weight:bold}
+.notice{
+  background:#fff8e6;color:#805b13;
+  padding:12px;border-radius:9px;font-size:12px;
+  line-height:1.6;margin:15px 0;
+}
+@media(max-width:800px){
+  header{padding:0 5%}
+  .hero{grid-template-columns:1fr;text-align:center;padding:65px 7%}
+  .hero h1{font-size:42px}
+  .packages,.steps{grid-template-columns:1fr}
+  nav{gap:12px}
+  nav a:not(.nav-login){display:none}
+}
+@media(min-width:801px){
+  .package.featured{transform:translateY(-9px)}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="#home" class="logo">Anwa<span>Skills</span></a>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#packages">Packages</a>
+    <a href="#how">How it works</a>
+    <a href="#" class="nav-login btn" onclick="openModal('login');return false">Login</a>
+  </nav>
+
+  <button class="menu-btn" onclick="openModal('login')">☰</button>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div>
+    <span class="tag">WELCOME TO ANWASKILLS</span>
+    <h1>Learn Skills.<br>Build Your <span>Future.</span></h1>
+    <p>
+      Discover useful digital skills, improve your knowledge
+      and explore learning opportunities with AnwaSkills.
+    </p>
+    <a href="#packages" class="btn">Explore Packages →</a>
+  </div>
+
+  <div class="hero-art">
+    <strong>AS</strong>
+    <h2>Learn. Grow. Succeed.</h2>
+    <p>Your learning journey starts here.</p>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section id="packages">
+  <div class="section-heading">
+    <h2>Choose Your Package</h2>
+    <p>Find the right learning package for your journey.</p>
+  </div>
+
+  <div class="packages">
+
+    <div class="package">
+      <h3>Basic</h3>
+      <p>Start your learning journey.</p>
+      <div class="price">₹300</div>
+      <ul>
+        <li>Basic learning materials</li>
+        <li>Student dashboard</li>
+        <li>Personal referral link</li>
+        <li>₹150 eligible commission</li>
+      </ul>
+      <button class="btn" onclick="choosePackage('Basic')">Choose Basic</button>
+    </div>
+
+    <div class="package featured">
+      <span class="popular">POPULAR PACKAGE</span>
+      <h3>Standard</h3>
+      <p>Develop more digital skills.</p>
+      <div class="price">₹600</div>
+      <ul>
+        <li>Standard learning materials</li>
+        <li>Student dashboard</li>
+        <li>Personal referral link</li>
+        <li>₹300 eligible commission</li>
+      </ul>
+      <button class="btn" onclick="choosePackage('Standard')">Choose Standard</button>
+    </div>
+
+    <div class="package">
+      <h3>Premium</h3>
+      <p>Access the premium package.</p>
+      <div class="price">₹1,000</div>
+      <ul>
+        <li>Premium learning materials</li>
+        <li>Student dashboard</li>
+        <li>Personal referral link</li>
+        <li>₹500 eligible commission</li>
+      </ul>
+      <button class="btn" onclick="choosePackage('Premium')">Choose Premium</button>
+    </div>
+
+  </div>
+
+  <p style="text-align:center;color:#718096;font-size:12px;margin-top:25px;line-height:1.7">
+    Referral commission depends on the referrer's own active package,
+    not the package purchased by the referred customer.
+    Commissions require genuine, verified sales.
+  </p>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" style="background:white">
+  <div class="section-heading">
+    <h2>How AnwaSkills Works</h2>
+    <p>Three steps to begin your learning journey.</p>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-number">01</div>
+      <h3>Choose a Package</h3>
+      <p>Select a learning package that suits your needs.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">02</div>
+      <h3>Learn New Skills</h3>
+      <p>Access your learning materials after purchase verification.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">03</div>
+      <h3>Share & Earn</h3>
+      <p>Share your referral link and earn eligible commissions from genuine sales.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REFERRAL -->
+<section>
+  <div class="referral">
+    <h2>Grow With AnwaSkills</h2>
+    <p>
+      Learn useful skills, share learning opportunities
+      and build your future with us.
+    </p>
+    <a href="#packages" class="btn" style="background:white;color:#155eef">
+      Get Started
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <strong>AnwaSkills</strong>
+  <p>Learn. Grow. Succeed.</p>
+  <p>© 2026 AnwaSkills. All rights reserved.</p>
+  <p>Contact: support@anwaskills.me</p>
+</footer>
+
+<!-- LOGIN / SIGNUP MODAL -->
+<div class="modal" id="authModal" onclick="outsideClose(event)">
+  <div class="modal-content">
+    <button class="close" onclick="closeModal()">×</button>
+
+    <div id="loginForm">
+      <h2>Welcome Back!</h2>
+      <p>Login to your AnwaSkills account.</p>
+
+      <div class="field">
+        <label>Email address</label>
+        <input type="email" id="loginEmail" placeholder="Enter your email">
+      </div>
+
+      <div class="field">
+        <label>Password</label>
+        <input type="password" id="loginPassword" placeholder="Enter password">
+      </div>
+
+      <button class="btn" onclick="demoMessage()">Login</button>
+
+      <div class="switch">
+        Don't have an account?
+        <button onclick="showSignup()">Create Account</button>
+      </div>
+    </div>
+
+    <div id="signupForm" style="display:none">
+      <h2>Create Account</h2>
+      <p>Join AnwaSkills and start learning.</p>
+
+      <div class="field">
+        <label>Full name</label>
+        <input type="text" id="signupName" placeholder="Your full name">
+      </div>
+
+      <div class="field">
+        <label>Username</label>
+        <input type="text" id="signupUsername" placeholder="Choose username">
+      </div>
+
+      <div class="field">
+        <label>Email address</label>
+        <input type="email" id="signupEmail" placeholder="Your email">
+      </div>
+
+      <div class="field">
+        <label>Password</label>
+        <input type="password" id="signupPassword" placeholder="Create password">
+      </div>
+
+      <div class="notice">
+        Account creation and password security will be handled
+        through Supabase when backend integration is completed.
+      </div>
+
+      <button class="btn" onclick="demoMessage()">Create Account</button>
+
+      <div class="switch">
+        Already registered?
+        <button onclick="showLogin()">Login</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+let selectedPackage = "";
+
+function openModal(mode){
+  document.getElementById("authModal").classList.add("show");
+  if(mode==="signup") showSignup();
+  else showLogin();
+}
+
+function closeModal(){
+  document.getElementById("authModal").classList.remove("show");
+}
+
+function outsideClose(event){
+  if(event.target.id==="authModal") closeModal();
+}
+
+function showSignup(){
+  document.getElementById("loginForm").style.display="none";
+  document.getElementById("signupForm").style.display="block";
+}
+
+function showLogin(){
+  document.getElementById("signupForm").style.display="none";
+  document.getElementById("loginForm").style.display="block";
+}
+
+function choosePackage(name){
+  selectedPackage=name;
+  openModal("signup");
+  alert("You selected the "+name+" package. Create an account to continue.");
+}
+
+function demoMessage(){
+  alert("This is the frontend preview. Login, registration and payments will work after Supabase integration.");
+}
+</script>
+
+</body>
+</html>
